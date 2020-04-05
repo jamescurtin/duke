@@ -1,0 +1,34 @@
+version: "3.7"
+
+x-build-args: &build_args
+  INSTALL_PYTHON_VERSION: 3.8
+
+x-default-volumes: &default_volumes
+  volumes:
+    - ./:/app
+
+services:
+  development: &development
+    build:
+      args:
+        <<: *build_args
+      context: .
+      target: development
+    image: "duke-devbox"
+    entrypoint: /bin/bash
+    <<: *default_volumes
+
+  test:
+    <<: *development
+    entrypoint: /app/bin/run_tests.sh
+
+  gen-images:
+    <<: *development
+    entrypoint: python3
+    command: -m duke.utils.generate_images
+
+  image-server:
+    <<: *development
+    entrypoint: ["uvicorn", "duke.fast:app", "--host", "0.0.0.0", "--reload"]
+    ports:
+      - "8000:8000"

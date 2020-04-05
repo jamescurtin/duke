@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    {% if troop_name %}
+    <h1>{{ troop_name }}</h1>
+    {% for image_name in images %}
+    <img src="{{ url_for('static', path=image_name) }}" alt="{{ image_name }}" width="250">
+    {% endfor %}
+    {% else %}
+    <h1>Hello!</h1>
+    {% endif %}
+
+
+</body>
+
+</html>
