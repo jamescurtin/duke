@@ -40,5 +40,6 @@ async def get_troop(request: Request, troop: Troop):
         images.append(file_name)
 
     return templates.TemplateResponse(
-        "index.html", {"request": request, "images": images, "troop_name": troop_name},
+        "index.html",
+        {"request": request, "images": images, "troop_name": troop_name},
     )
