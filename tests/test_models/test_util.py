@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from duke.models import _util
 from duke.types import Point
 
@@ -14,5 +12,6 @@ def test_get_board_coordinates():
 def test_get_png(mocker):
     mock_open = mocker.patch("duke.models._util.Image.open")
     _util.get_png("foo", "bar")
-    expected_path = Path("/app/duke/assets/tiles/foo/bar.png")
-    mock_open.assert_called_with(expected_path)
+    expected_path = "/duke/assets/tiles/foo/bar.png"
+    open_path = mock_open.call_args[0][0]
+    assert expected_path in str(open_path)

@@ -1,3 +1,5 @@
+![Lint & Test](https://github.com/jamescurtin/duke/workflows/Lint%20&%20Test/badge.svg)
+
 WIP
 
 
