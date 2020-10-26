@@ -1,5 +1,5 @@
 Pillow==8.0.1
-pygame==2.0.0.dev20
+pygame==2.0.0.dev22
 fastapi==0.61.1
 uvicorn==0.12.2
 jinja2==2.11.2
